@@ -11,10 +11,30 @@ with open(model_file, 'rb') as input_file:
 # Define the flask application
 app=Flask(__name__)
 
+class_dict = {
+    "0": "Glucose",
+    "1": "Insulin",
+    "2": "BMI"
+    "3": "Age"
+}
+
+
 
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     if request.method == 'POST':
+
+
+        val1 = float(request.form["val1"])
+        val2 = float(request.form["val2"])
+        val3 = float(request.form["val3"])
+        val4 = float(request.form["val4"])
+        
+        data = [[val1, val2, val3, val4]]
+        prediction = str(model.predict(data)[0])
+        pred_class = class_dict[prediction]
+    else:
+        pred_class = None
         
         # Get the data from the form - take a look at the tutorial
         # for a hint on how to do this. Also, if you are using the model
