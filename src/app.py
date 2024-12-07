@@ -12,12 +12,10 @@ with open(model_file, 'rb') as input_file:
 app=Flask(__name__)
 
 class_dict = {
-    "0": "Glucose",
-    "1": "Insulin",
-    "2": "BMI"
-    "3": "Age"
+    "0": "Not Diabetic",
+    "1": "Diabetic"
+    
 }
-
 
 
 @app.route('/', methods = ['GET', 'POST'])
@@ -25,10 +23,10 @@ def index():
     if request.method == 'POST':
 
 
-        val1 = float(request.form["val1"])
-        val2 = float(request.form["val2"])
-        val3 = float(request.form["val3"])
-        val4 = float(request.form["val4"])
+        val1 = float(request.form["Glucose"])
+        val2 = float(request.form["Insulin"])
+        val3 = float(request.form["BMI"])
+        val4 = float(request.form["Age"])
         
         data = [[val1, val2, val3, val4]]
         prediction = str(model.predict(data)[0])
