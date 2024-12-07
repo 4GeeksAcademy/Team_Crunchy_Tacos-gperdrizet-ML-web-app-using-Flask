@@ -48,3 +48,5 @@ def index():
 
     # Return the result to flask
     return render_template('index.html', prediction=pred_class)
+
+
