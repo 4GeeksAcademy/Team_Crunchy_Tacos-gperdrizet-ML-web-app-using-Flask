@@ -47,4 +47,4 @@ def index():
         # model returns to a human readable string, like 'diabetic' etc.
 
     # Return the result to flask
-    return render_template('index.html', prediction=predicted_outcome)
+    return render_template('index.html', prediction=pred_class)
